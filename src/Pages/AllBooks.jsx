@@ -7,13 +7,18 @@ const FaqAccordion = () => {
   );
 
   const [currentBookUrl, setCurrentBookUrl] = useState("");
-
+  console.log(data);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleBookClick = (bookLink) => {
     setCurrentBookUrl(bookLink);
-    // Bootstrap modalni ochish uchun kerak bo'lgan JavaScript funksiyasini chaqirish
+    const formattedLink =
+      bookLink.startsWith("http://") || bookLink.startsWith("https://")
+        ? bookLink
+        : `https://usatlibrary.pythonanywhere.com/${bookLink}`;
+    setCurrentBookUrl(formattedLink);
+    // eslint-disable-next-line no-undef
     new bootstrap.Modal(document.getElementById("bookModal")).show();
   };
 

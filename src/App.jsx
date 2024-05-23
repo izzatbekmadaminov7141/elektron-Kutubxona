@@ -4,7 +4,6 @@ import "./App.css";
 import AllBooks from "./Pages/AllBooks";
 
 const App = () => {
-
   const router = createBrowserRouter([
     {
       path: "/",
